@@ -1,3 +1,3 @@
-import DatetimeInputs from './datetime-inputs.component.js'
+import DatetimeInput from './datetime-input.component.js'
 
-export default DatetimeInputs
+export {DatetimeInput}
