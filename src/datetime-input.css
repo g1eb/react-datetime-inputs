@@ -1,0 +1,68 @@
+.datetimeInput {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 4em;
+  margin: 0;
+  padding: 0;
+  color: #444;
+  font-size: 14px;
+  font-family: sans-serif;
+  text-decoration: none;
+  text-align: center;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.datetimeInput .display {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4em;
+  background-color: #efefef;
+  transition: background-color 0.25s ease-out;
+}
+
+.datetimeInput .display .date {
+  color: #777;
+  font-size: 1em;
+  line-height: 2em;
+  display: block;
+  overflow: hidden;
+}
+.datetimeInput .display .time {
+  font-size: 1.5em;
+  line-height: 1.25em;
+  display: block;
+  overflow: hidden;
+}
+
+.datetimeInput .display .placeholder {
+  font-size: 1.5em;
+  line-height: 3em;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.datetimeInput .display.active,
+.datetimeInput .display:hover {
+  background-color: #ddd;
+}
+
+.datetimeInput .display.warning {
+  background-color: rgba(255, 54, 46, 0.75);
+}
+
+.datetimeInput .display.warning.active,
+.datetimeInput .display.warning:hover {
+  background-color: rgba(255, 54, 46, 0.75);
+}
