@@ -44,7 +44,11 @@
       ReactDOM.render(
         <div>
           <h1>Datetime</h1>
-          <DatetimeInputs.DatetimeInput datetime={now} onChange={print} />
+          <DatetimeInputs.DatetimeInput
+            datetime={now}
+            onChange={print}
+            placeholder={'Click me'}>
+          </DatetimeInputs.DatetimeInput>
         </div>,
         document.getElementById('root')
       )
