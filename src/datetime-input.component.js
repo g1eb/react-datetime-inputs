@@ -7,22 +7,20 @@ import styles from './datetime-input.css'
 class DatetimeInput extends React.Component {
 
   renderDate() {
-    let format = this.props.dateFormat || 'DD MMMM YYYY'
     if ( this.props.datetime ) {
       return (
         <div className={styles.date}>
-          {this.props.datetime.format(format)}
+          {this.props.datetime.format(this.props.dateFormat)}
         </div>
       )
     }
   }
 
   renderTime() {
-    let format = this.props.timeFormat || 'HH : mm : ss'
     if ( this.props.datetime ) {
       return (
         <div className={styles.time}>
-          {this.props.datetime.format(format)}
+          {this.props.datetime.format(this.props.timeFormat)}
         </div>
       )
     }
@@ -49,6 +47,13 @@ class DatetimeInput extends React.Component {
       </div>
     )
   }
+}
+
+DatetimeInput.defaultProps = {
+  datetime: undefined,
+  dateFormat: 'DD MMMM YYYY',
+  timeFormat: 'HH : mm : ss',
+  placeholder: 'Set datetime',
 }
 
 export default DatetimeInput
