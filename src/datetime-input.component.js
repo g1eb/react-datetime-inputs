@@ -6,6 +6,18 @@ import styles from './datetime-input.css'
 
 class DatetimeInput extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      active: false,
+    }
+  }
+
+  toggleEditPopover() {
+    this.setState({active: !this.state.active})
+  }
+
   renderDate() {
     if ( this.props.datetime ) {
       return (
@@ -51,7 +63,8 @@ class DatetimeInput extends React.Component {
   render() {
     return (
       <div className={styles.datetimeInput}>
-        <div className={styles.display}>
+        <div className={styles.display}
+          onClick={this.toggleEditPopover.bind(this)}>
           {this.renderDate()}
           {this.renderTime()}
           {this.renderPlaceholder()}
