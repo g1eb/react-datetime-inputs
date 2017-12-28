@@ -48,9 +48,15 @@ class DatetimeInput extends React.Component {
   }
 
   toggleCalendar() {
-    this.setState({
-      calendar: this.props.datetime.clone() || moment(),
-    })
+    if ( !!this.state.calendar ) {
+      this.setState({
+        calendar: null,
+      })
+    } else {
+      this.setState({
+        calendar: this.props.datetime.clone() || moment(),
+      })
+    }
   }
 
   renderDate() {
