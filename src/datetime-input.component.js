@@ -17,6 +17,10 @@ class DatetimeInput extends React.Component {
     }
   }
 
+  closeEditPopover() {
+    this.setState({active: false})
+  }
+
   toggleEditPopover() {
     this.setState({
       active: !this.state.active,
@@ -188,6 +192,14 @@ class DatetimeInput extends React.Component {
     )
   }
 
+  renderCloseButton() {
+    return (
+      <div className={styles.closeButton}>
+        <div onClick={this.closeEditPopover.bind(this)}>Close</div>
+      </div>
+    )
+  }
+
   renderEditPopover() {
     if ( this.state.active ) {
       return (
@@ -198,6 +210,7 @@ class DatetimeInput extends React.Component {
           </div>
           {this.renderCalendar()}
           {this.renderTimer()}
+          {this.renderCloseButton()}
         </div>
       )
     }
