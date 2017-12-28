@@ -17,6 +17,10 @@ class DatetimeInput extends React.Component {
     }
   }
 
+  clear() {
+    this.props.datetime = undefined
+  }
+
   closeEditPopover() {
     this.setState({active: false})
   }
@@ -192,6 +196,16 @@ class DatetimeInput extends React.Component {
     )
   }
 
+  renderClearButton() {
+    if ( this.props.allowClear && !!this.props.datetime ) {
+      return (
+        <div className={styles.clearButton}>
+          <div onClick={this.clear.bind(this)}>Clear</div>
+        </div>
+      )
+    }
+  }
+
   renderCloseButton() {
     return (
       <div className={styles.closeButton}>
@@ -210,6 +224,7 @@ class DatetimeInput extends React.Component {
           </div>
           {this.renderCalendar()}
           {this.renderTimer()}
+          {this.renderClearButton()}
           {this.renderCloseButton()}
         </div>
       )
@@ -242,6 +257,7 @@ DatetimeInput.defaultProps = {
   dateFormat: 'DD MMMM YYYY',
   timeFormat: 'HH : mm : ss',
   placeholder: 'Set datetime',
+  allowClear: false,
 }
 
 export default DatetimeInput
