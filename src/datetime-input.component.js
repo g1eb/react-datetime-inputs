@@ -15,6 +15,22 @@ class DatetimeInput extends React.Component {
       active: false,
       calendar: null,
     }
+
+    this.handleClickOutside = this.handleClickOutside.bind(this)
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickOutside)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside)
+  }
+
+  handleClickOutside(event) {
+    if ( this.state.active && !this.wrapper.contains(event.target) ) {
+      this.setState({active: false}, this.props.onClose)
+    }
   }
 
   clear() {
@@ -239,7 +255,8 @@ class DatetimeInput extends React.Component {
     }
 
     return (
-      <div className={styles.datetimeInput}>
+      <div className={styles.datetimeInput}
+        ref={node => {this.wrapper = node}}>
         <div className={displayClassNames}
           onClick={this.toggleEditPopover.bind(this)}>
           {this.renderDate()}
