@@ -37,6 +37,12 @@ class DatetimeInput extends React.Component {
     this.props.datetime = undefined
   }
 
+  updateCalendar(method, amount, interval) {
+    this.setState({
+      calendar: this.state.calendar[method](amount, interval),
+    })
+  }
+
   closeEditPopover() {
     this.setState({active: false}, this.props.onClose)
   }
@@ -92,14 +98,18 @@ class DatetimeInput extends React.Component {
   renderCalendarHeader() {
     return (
       <div className={styles.calendarHeader}>
-        <div className={`${styles.arrow} ${styles.arrowLeft}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowLeft}`}
+          onClick={() => this.updateCalendar('subtract', 1, 'month')}>
+        </div>
         <span>
-          { this.props.datetime.format('YYYY') === this.current.format('YYYY')
-            ? this.props.datetime.format('MMMM')
-            : this.props.datetime.format('MMMM YYYY')
+          { this.state.calendar.format('YYYY') === this.current.format('YYYY')
+            ? this.state.calendar.format('MMMM')
+            : this.state.calendar.format('MMMM YYYY')
           }
         </span>
-        <div className={`${styles.arrow} ${styles.arrowRight}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowRight}`}
+          onClick={() => this.updateCalendar('add', 1, 'month')}>
+        </div>
       </div>
     )
   }
