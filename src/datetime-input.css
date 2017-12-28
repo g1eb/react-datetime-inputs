@@ -37,29 +37,6 @@
   transition: background-color 0.25s ease-out;
 }
 
-.datetimeInput .display .date {
-  color: #777;
-  font-size: 1em;
-  line-height: 2em;
-  display: block;
-  overflow: hidden;
-}
-.datetimeInput .display .time {
-  font-size: 1.5em;
-  line-height: 1.25em;
-  display: block;
-  overflow: hidden;
-}
-
-.datetimeInput .display .placeholder {
-  font-size: 1.5em;
-  line-height: 3em;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
 .datetimeInput .display.active,
 .datetimeInput .display:hover {
   background-color: #ddd;
@@ -72,6 +49,30 @@
 .datetimeInput .display.warning.active,
 .datetimeInput .display.warning:hover {
   background-color: rgba(255, 54, 46, 0.75);
+}
+
+.datetimeInput .display > .date {
+  color: #777;
+  font-size: 1em;
+  line-height: 2em;
+  display: block;
+  overflow: hidden;
+}
+
+.datetimeInput .display > .time {
+  font-size: 1.5em;
+  line-height: 1.25em;
+  display: block;
+  overflow: hidden;
+}
+
+.datetimeInput .display > .placeholder {
+  font-size: 1.5em;
+  line-height: 3em;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 
