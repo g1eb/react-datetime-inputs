@@ -11,10 +11,19 @@ class DatetimeInput extends React.Component {
 
     this.current = moment()
 
+    let datetime = null
+    if ( !!this.props.datetime ) {
+      if ( !this.props.datetime._isAMomentObject ) {
+        datetime = this.props.datetime.clone()
+      } else {
+        datetime = moment(this.props.datetime)
+      }
+    }
+
     this.state = {
       active: false,
       calendar: null,
-      datetime: this.props.datetime.clone(),
+      datetime,
     }
 
     this.handleClickOutside = this.handleClickOutside.bind(this)
@@ -72,7 +81,7 @@ class DatetimeInput extends React.Component {
   toggleEditPopover() {
     this.setState({
       active: !this.state.active,
-      datetime: this.props.datetime.clone() || moment(),
+      datetime: this.state.datetime || moment(),
     })
   }
 
