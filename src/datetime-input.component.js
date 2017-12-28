@@ -43,6 +43,17 @@ class DatetimeInput extends React.Component {
     })
   }
 
+  handleOnWheelCalendar(event) {
+    event = event.originalEvent || event
+    let delta = event.wheelDelta || (event.deltaY * -1) || 0
+    if ( delta > 0 ) {
+      this.updateCalendar('subtract', 1, 'month')
+    }
+    if ( delta < 0 ) {
+      this.updateCalendar('add', 1, 'month')
+    }
+  }
+
   closeEditPopover() {
     this.setState({active: false}, this.props.onClose)
   }
@@ -97,7 +108,8 @@ class DatetimeInput extends React.Component {
 
   renderCalendarHeader() {
     return (
-      <div className={styles.calendarHeader}>
+      <div className={styles.calendarHeader}
+        onWheel={this.handleOnWheelCalendar.bind(this)}>
         <div className={`${styles.arrow} ${styles.arrowLeft}`}
           onClick={() => this.updateCalendar('subtract', 1, 'month')}>
         </div>
