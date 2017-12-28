@@ -43,14 +43,14 @@ class DatetimeInput extends React.Component {
     })
   }
 
-  handleOnWheelCalendar(event) {
+  handleOnWheel(event, upCallback, downCallback) {
     event = event.originalEvent || event
     let delta = event.wheelDelta || (event.deltaY * -1) || 0
-    if ( delta > 0 ) {
-      this.updateCalendar('subtract', 1, 'month')
-    }
     if ( delta < 0 ) {
-      this.updateCalendar('add', 1, 'month')
+      upCallback()
+    }
+    if ( delta > 0 ) {
+      downCallback()
     }
   }
 
@@ -109,7 +109,10 @@ class DatetimeInput extends React.Component {
   renderCalendarHeader() {
     return (
       <div className={styles.calendarHeader}
-        onWheel={this.handleOnWheelCalendar.bind(this)}>
+        onWheel={(event) => this.handleOnWheel(event,
+          () => this.updateCalendar('add', 1, 'month'),
+          () => this.updateCalendar('subtract', 1, 'month'),
+        )}>
         <div className={`${styles.arrow} ${styles.arrowLeft}`}
           onClick={() => this.updateCalendar('subtract', 1, 'month')}>
         </div>
