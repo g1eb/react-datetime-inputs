@@ -14,6 +14,7 @@ class DatetimeInput extends React.Component {
     this.state = {
       active: false,
       calendar: null,
+      datetime: this.props.datetime.clone(),
     }
 
     this.handleClickOutside = this.handleClickOutside.bind(this)
@@ -61,6 +62,7 @@ class DatetimeInput extends React.Component {
   toggleEditPopover() {
     this.setState({
       active: !this.state.active,
+      datetime: this.props.datetime.clone() || moment(),
     })
   }
 
@@ -71,33 +73,33 @@ class DatetimeInput extends React.Component {
       })
     } else {
       this.setState({
-        calendar: this.props.datetime.clone() || moment(),
+        calendar: this.state.datetime.clone() || moment(),
       })
     }
   }
 
   renderDate() {
-    if ( this.props.datetime ) {
+    if ( this.state.datetime ) {
       return (
         <div className={styles.date}>
-          {this.props.datetime.format(this.props.dateFormat)}
+          {this.state.datetime.format(this.props.dateFormat)}
         </div>
       )
     }
   }
 
   renderTime() {
-    if ( this.props.datetime ) {
+    if ( this.state.datetime ) {
       return (
         <div className={styles.time}>
-          {this.props.datetime.format(this.props.timeFormat)}
+          {this.state.datetime.format(this.props.timeFormat)}
         </div>
       )
     }
   }
 
   renderPlaceholder() {
-    if ( !this.props.datetime ) {
+    if ( !this.state.datetime ) {
       return (
         <div className={styles.placeholder}>
           {this.props.placeholder}
@@ -163,7 +165,7 @@ class DatetimeInput extends React.Component {
             if ( date.clone().isSame(this.current.clone().startOf('day')) ) {
               dateStyles += ` ${styles.current}`
             }
-            if ( date.clone().isSame(this.props.datetime.clone().startOf('day')) ) {
+            if ( date.clone().isSame(this.state.datetime.clone().startOf('day')) ) {
               dateStyles += ` ${styles.active}`
             }
             if ( date.clone().month() !== this.state.calendar.month() ) {
@@ -205,7 +207,7 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerHours}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
-        <span>{this.props.datetime.format('HH')}</span>
+        <span>{this.state.datetime.format('HH')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
       </div>
     )
@@ -215,7 +217,7 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerMinutes}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
-        <span>{this.props.datetime.format('mm')}</span>
+        <span>{this.state.datetime.format('mm')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
       </div>
     )
@@ -225,7 +227,7 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerSeconds}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
-        <span>{this.props.datetime.format('ss')}</span>
+        <span>{this.state.datetime.format('ss')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
       </div>
     )
@@ -244,7 +246,7 @@ class DatetimeInput extends React.Component {
   }
 
   renderClearButton() {
-    if ( this.props.allowClear && !!this.props.datetime ) {
+    if ( this.props.allowClear && !!this.state.datetime ) {
       return (
         <div className={styles.clearButton}>
           <div onClick={this.clear.bind(this)}>Clear</div>
@@ -267,7 +269,7 @@ class DatetimeInput extends React.Component {
         <div className={styles.editPopover}>
           <div className={styles.header}
             onClick={this.toggleCalendar.bind(this)}>
-            {this.props.datetime.format(this.props.dateFormat)}
+            {this.state.datetime.format(this.props.dateFormat)}
           </div>
           {this.renderCalendar()}
           {this.renderTimer()}
@@ -279,7 +281,6 @@ class DatetimeInput extends React.Component {
   }
 
   render() {
-
     let displayClassNames = styles.display
     if ( this.state.active ) {
       displayClassNames += ` ${styles.active}`
