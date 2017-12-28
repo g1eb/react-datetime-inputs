@@ -36,6 +36,18 @@ class DatetimeInput extends React.Component {
     }
   }
 
+  renderEditPopover() {
+    if ( this.state.active ) {
+      return (
+        <div className={styles.editPopover}>
+          <div className={styles.header}>
+            {this.props.datetime.format(this.props.dateFormat)}
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className={styles.datetimeInput}>
@@ -43,6 +55,7 @@ class DatetimeInput extends React.Component {
           {this.renderDate()}
           {this.renderTime()}
           {this.renderPlaceholder()}
+          {this.renderEditPopover()}
         </div>
       </div>
     )
