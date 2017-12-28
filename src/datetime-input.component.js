@@ -22,7 +22,7 @@ class DatetimeInput extends React.Component {
   }
 
   closeEditPopover() {
-    this.setState({active: false})
+    this.setState({active: false}, this.props.onClose)
   }
 
   toggleEditPopover() {
@@ -258,6 +258,7 @@ DatetimeInput.defaultProps = {
   timeFormat: 'HH : mm : ss',
   placeholder: 'Set datetime',
   allowClear: false,
+  onClose: undefined,
 }
 
 export default DatetimeInput
