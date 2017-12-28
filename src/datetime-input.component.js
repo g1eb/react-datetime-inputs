@@ -35,7 +35,11 @@ class DatetimeInput extends React.Component {
   }
 
   clear() {
-    this.props.datetime = undefined
+    this.setState({
+      active: false,
+      datetime: null,
+      calendar: null,
+    }, this.props.onChange)
   }
 
   updateCalendar(method, amount, interval) {
