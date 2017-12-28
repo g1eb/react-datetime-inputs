@@ -245,8 +245,8 @@ class DatetimeInput extends React.Component {
           {this.renderDate()}
           {this.renderTime()}
           {this.renderPlaceholder()}
-          {this.renderEditPopover()}
         </div>
+        {this.renderEditPopover()}
       </div>
     )
   }
