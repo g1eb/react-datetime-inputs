@@ -48,6 +48,12 @@ class DatetimeInput extends React.Component {
     })
   }
 
+  updateDatetime(method, amount, interval) {
+    this.setState({
+      datetime: this.state.datetime[method](amount, interval),
+    })
+  }
+
   handleOnWheel(event, upCallback, downCallback) {
     event = event.originalEvent || event
     let delta = event.wheelDelta || (event.deltaY * -1) || 0
@@ -209,7 +215,11 @@ class DatetimeInput extends React.Component {
 
   renderHours() {
     return (
-      <div className={styles.timerHours}>
+      <div className={styles.timerHours}
+        onWheel={(event) => this.handleOnWheel(event,
+          () => this.updateDatetime('add', 1, 'hour'),
+          () => this.updateDatetime('subtract', 1, 'hour'),
+        )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
         <span>{this.state.datetime.format('HH')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
@@ -219,7 +229,11 @@ class DatetimeInput extends React.Component {
 
   renderMinutes() {
     return (
-      <div className={styles.timerMinutes}>
+      <div className={styles.timerMinutes}
+        onWheel={(event) => this.handleOnWheel(event,
+          () => this.updateDatetime('add', 1, 'minutes'),
+          () => this.updateDatetime('subtract', 1, 'minutes'),
+        )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
         <span>{this.state.datetime.format('mm')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
@@ -229,7 +243,11 @@ class DatetimeInput extends React.Component {
 
   renderSeconds() {
     return (
-      <div className={styles.timerSeconds}>
+      <div className={styles.timerSeconds}
+        onWheel={(event) => this.handleOnWheel(event,
+          () => this.updateDatetime('add', 1, 'seconds'),
+          () => this.updateDatetime('subtract', 1, 'seconds'),
+        )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
         <span>{this.state.datetime.format('ss')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
