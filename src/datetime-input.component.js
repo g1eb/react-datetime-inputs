@@ -18,6 +18,13 @@ class DatetimeInput extends React.Component {
     this.setState({active: !this.state.active})
   }
 
+  getDisplayStyles() {
+    if ( this.state.active ) {
+      return `${styles.display} ${styles.active}`
+    }
+    return styles.display
+  }
+
   renderDate() {
     if ( this.props.datetime ) {
       return (
@@ -63,7 +70,7 @@ class DatetimeInput extends React.Component {
   render() {
     return (
       <div className={styles.datetimeInput}>
-        <div className={styles.display}
+        <div className={this.getDisplayStyles()}
           onClick={this.toggleEditPopover.bind(this)}>
           {this.renderDate()}
           {this.renderTime()}
