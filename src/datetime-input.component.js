@@ -146,6 +146,48 @@ class DatetimeInput extends React.Component {
     }
   }
 
+  renderHours() {
+    return (
+      <div className={styles.timerHours}>
+        <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
+        <span>{this.props.datetime.format('HH')}</span>
+        <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
+      </div>
+    )
+  }
+
+  renderMinutes() {
+    return (
+      <div className={styles.timerMinutes}>
+        <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
+        <span>{this.props.datetime.format('mm')}</span>
+        <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
+      </div>
+    )
+  }
+
+  renderSeconds() {
+    return (
+      <div className={styles.timerSeconds}>
+        <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
+        <span>{this.props.datetime.format('ss')}</span>
+        <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
+      </div>
+    )
+  }
+
+  renderTimer() {
+    return (
+      <div className={styles.timer}>
+        {this.renderHours()}
+        <div className={styles.timerDivider}>:</div>
+        {this.renderMinutes()}
+        <div className={styles.timerDivider}>:</div>
+        {this.renderSeconds()}
+      </div>
+    )
+  }
+
   renderEditPopover() {
     if ( this.state.active ) {
       return (
@@ -155,6 +197,7 @@ class DatetimeInput extends React.Component {
             {this.props.datetime.format(this.props.dateFormat)}
           </div>
           {this.renderCalendar()}
+          {this.renderTimer()}
         </div>
       )
     }

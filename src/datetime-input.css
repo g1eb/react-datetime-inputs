@@ -255,3 +255,112 @@
 .datetimeInput .calendar .calendarBody .week .date.inactive {
   color: #aaa;
 }
+
+
+/**
+ * Timer
+ */
+.datetimeInput .timer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.datetimeInput .timer .timerHours,
+.datetimeInput .timer .timerMinutes,
+.datetimeInput .timer .timerSeconds {
+  cursor: default;
+  width: 3em;
+  display: inline-block;
+  font-size: 3em;
+  line-height: 1.5em;
+  position: relative;
+}
+
+.datetimeInput .timer .timerHours .arrow,
+.datetimeInput .timer .timerMinutes .arrow,
+.datetimeInput .timer .timerSeconds .arrow {
+  position: relative;
+  color: #ddd;
+  cursor: pointer;
+  height: 1em;
+  margin: 0 0.5em;
+  line-height: 1em;
+  font-size: 0.75em;
+}
+
+.datetimeInput .timer .timerHours .arrow.arrowUp::before,
+.datetimeInput .timer .timerMinutes .arrow.arrowUp::before,
+.datetimeInput .timer .timerSeconds .arrow.arrowUp::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid #ddd;
+  transition: border 0.25s ease-out;
+}
+
+.datetimeInput .timer .timerHours .arrow.arrowUp:hover::before,
+.datetimeInput .timer .timerMinutes .arrow.arrowUp:hover::before,
+.datetimeInput .timer .timerSeconds .arrow.arrowUp:hover::before {
+  border-bottom-color: #999;
+}
+
+.datetimeInput .timer .timerHours .arrow.arrowDown::before,
+.datetimeInput .timer .timerMinutes .arrow.arrowDown::before,
+.datetimeInput .timer .timerSeconds .arrow.arrowDown::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 35%;
+  border-left: 0.5em solid transparent;
+  border-right: 0.5em solid transparent;
+  border-top: 0.5em solid #ddd;
+  transition: border 0.25s ease-out;
+}
+
+.datetimeInput .timer .timerHours .arrow.arrowDown:hover::before,
+.datetimeInput .timer .timerMinutes .arrow.arrowDown:hover::before,
+.datetimeInput .timer .timerSeconds .arrow.arrowDown:hover::before {
+  border-top-color: #999;
+}
+
+.datetimeInput .timer .timerDivider {
+  font-size: 3em;
+  line-height: 3em;
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-name: blinker;
+  -moz-animation-duration: 5s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  animation-name: blinker;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+  0% { opacity: 0.0; }
+  5% { opacity: 1.0; }
+  95% { opacity: 1.0; }
+  100% { opacity: 0.0; }
+}
+
+@-webkit-keyframes blinker {
+  0% { opacity: 0.0; }
+  5% { opacity: 1.0; }
+  95% { opacity: 1.0; }
+  100% { opacity: 0.0; }
+}
+
+@keyframes blinker {
+  0% { opacity: 0.0; }
+  5% { opacity: 1.0; }
+  95% { opacity: 1.0; }
+  100% { opacity: 0.0; }
+}
