@@ -92,6 +92,7 @@
   border: 1px solid #aaa;
   box-sizing: border-box;
 }
+
 .datetimeInput .editPopover .header {
   width: 100%;
   color: #777;
@@ -100,6 +101,7 @@
   cursor: pointer;
   transition: background-color 0.25s ease-out;
 }
+
 .datetimeInput .editPopover .header::before {
   content: "";
   display: block;
@@ -121,7 +123,135 @@
   -webkit-transform: rotate(-45deg);
   transition: background-color 0.25s ease-out;
 }
+
 .datetimeInput .editPopover .header:hover,
 .datetimeInput .editPopover .header:hover::before {
   background-color: #ddd;
+}
+
+
+/**
+ * Calendar
+ */
+.datetimeInput .calendar .calendarHeader {
+  cursor: default;
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  font-size: 1.5em;
+  line-height: 2em;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow {
+  display: inline-block;
+  color: #ddd;
+  cursor: pointer;
+  line-height: 1.5em;
+  font-size: 1.5em;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow.arrowLeft {
+  position: absolute;
+  left: 0;
+  width: 2em;
+  height: 100%;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow.arrowLeft::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  border-right: 0.75em solid #ddd;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  transition: border 0.25s ease-out;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow.arrowLeft:hover::before {
+  border-right-color: #999;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow.arrowRight {
+  position: absolute;
+  right: 0;
+  width: 2em;
+  height: 100%;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow.arrowRight::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  right: 25%;
+  border-left: 0.75em solid #ddd;
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  transition: border 0.25s ease-out;
+}
+
+.datetimeInput .calendar .calendarHeader .arrow.arrowRight:hover::before {
+  border-left-color: #999;
+}
+
+.datetimeInput .calendar .calendarBody {
+  padding: 0.5em 0;
+}
+
+.datetimeInput .calendar .calendarBody .weekdays {
+  cursor: default;
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 1em;
+  line-height: 2em;
+  text-transform: uppercase;
+  padding: 0 1em;
+}
+
+.datetimeInput .calendar .calendarBody .weekdays .weekday {
+  display: inline-block;
+  width: 5em;
+  height: 2.5em;
+}
+
+.datetimeInput .calendar .calendarBody .weekdays .weekday {
+  display: inline-block;
+}
+
+.datetimeInput .calendar .calendarBody .week {
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 1.25em;
+  line-height: 2.65em;
+  letter-spacing: 1px;
+  padding: 0.5em 1em;
+}
+
+.datetimeInput .calendar .calendarBody .week .date {
+  display: inline-block;
+  cursor: pointer;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  transition: background-color 0.25s ease-out;
+}
+
+.datetimeInput .calendar .calendarBody .week .date.current {
+  color: #444;
+}
+
+.datetimeInput .calendar .calendarBody .week .date:not(.active):hover {
+  background-color: #ddd;
+}
+
+.datetimeInput .calendar .calendarBody .week .date.active,
+.datetimeInput .calendar .calendarBody .week .date.inactive.active {
+  color: #efefef;
+  background-color: rgba(255, 69, 0, 0.75);
+}
+
+.datetimeInput .calendar .calendarBody .week .date.inactive {
+  color: #aaa;
 }
