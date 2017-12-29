@@ -56,9 +56,8 @@ class DatetimeInput extends React.Component {
     this.setState({calendar})
   }
 
-  updateDatetime(method, amount, interval) {
-    let datetime = this.state.datetime[method](amount, interval)
-    if ( datetime.month() !== this.state.calendar.month() ) {
+  update(datetime) {
+    if ( !!this.state.calendar && datetime.month() !== this.state.calendar.month() ) {
       this.setState({
         datetime: datetime,
         calendar: datetime,
@@ -236,15 +235,15 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerHours}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.updateDatetime('add', 1, 'hour'),
-          () => this.updateDatetime('subtract', 1, 'hour'),
+          () => this.update(this.state.datetime.add(1, 'hours')),
+          () => this.update(this.state.datetime.subtract(1, 'hours')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}
-          onClick={() => this.updateDatetime('add', 1, 'hour')}>
+          onClick={() => this.update(this.state.datetime.add(1, 'hours'))}>
         </div>
         <span>{this.state.datetime.format('HH')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}
-          onClick={() => this.updateDatetime('subtract', 1, 'hour')}>
+          onClick={() => this.update(this.state.datetime.subtract(1, 'hours'))}>
         </div>
       </div>
     )
@@ -254,15 +253,15 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerMinutes}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.updateDatetime('add', 1, 'minutes'),
-          () => this.updateDatetime('subtract', 1, 'minutes'),
+          () => this.update(this.state.datetime.add(1, 'minutes')),
+          () => this.update(this.state.datetime.subtract(1, 'minutes')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}
-          onClick={() => this.updateDatetime('add', 1, 'minutes')}>
+          onClick={() => this.update(this.state.datetime.add(1, 'minutes'))}>
         </div>
         <span>{this.state.datetime.format('mm')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}
-          onClick={() => this.updateDatetime('subtract', 1, 'minutes')}>
+          onClick={() => this.update(this.state.datetime.subtract(1, 'minutes'))}>
         </div>
       </div>
     )
@@ -272,15 +271,15 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerSeconds}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.updateDatetime('add', 1, 'seconds'),
-          () => this.updateDatetime('subtract', 1, 'seconds'),
+          () => this.update(this.state.datetime.add(1, 'seconds')),
+          () => this.update(this.state.datetime.subtract(1, 'seconds')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}
-          onClick={() => this.updateDatetime('add', 1, 'seconds')}>
+          onClick={() => this.update(this.state.datetime.add(1, 'seconds'))}>
         </div>
         <span>{this.state.datetime.format('ss')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}
-          onClick={() => this.updateDatetime('subtract', 1, 'seconds')}>
+          onClick={() => this.update(this.state.datetime.subtract(1, 'seconds'))}>
         </div>
       </div>
     )
