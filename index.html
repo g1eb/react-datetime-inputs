@@ -28,12 +28,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
 
     <!-- Datetime Inputs -->
-    <script src="dist/datetime-inputs.js"></script>
+    <script src="dist/datetime-inputs.min.js"></script>
 
     <!-- Example Component -->
     <script type="text/babel">
 
       class App extends React.Component {
+
+        constructor(props) {
+          super(props)
+
+          this.state = {
+            datetime: null,
+          }
+        }
 
         handleOnChange(datetime) {
           this.setState({datetime})
