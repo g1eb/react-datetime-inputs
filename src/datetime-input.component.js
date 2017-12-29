@@ -324,10 +324,9 @@ class DatetimeInput extends React.Component {
   }
 
   render() {
-    let displayClassNames = styles.display
-    if ( this.state.active ) {
-      displayClassNames += ` ${styles.active}`
-    }
+    let displayClassNames = `${styles.display} ${this.props.cssClass} ${
+      this.state.active ? styles.active : ''
+    }`
 
     return (
       <div className={styles.datetimeInput}
@@ -352,6 +351,7 @@ DatetimeInput.defaultProps = {
   onChange: undefined,
   onClose: undefined,
   allowClear: false,
+  cssClass: '',
 }
 
 export default DatetimeInput
