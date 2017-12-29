@@ -51,20 +51,15 @@ class DatetimeInput extends React.Component {
     }, () => this.props.onChange())
   }
 
-  updateCalendar(method, amount, interval) {
-    let calendar = this.state.calendar[method](amount, interval)
+  updateCalendar(calendar) {
     this.setState({calendar})
   }
 
   update(datetime) {
-    if ( !!this.state.calendar && datetime.month() !== this.state.calendar.month() ) {
-      this.setState({
-        datetime: datetime,
-        calendar: datetime.clone(),
-      }, () => this.props.onChange(datetime))
-    } else {
-      this.setState({datetime}, () => this.props.onChange(datetime))
+    if ( !!this.state.calendar ) {
+      this.updateCalendar(datetime.clone())
     }
+    this.setState({datetime}, () => this.props.onChange(datetime))
   }
 
   handleOnWheel(event, upCallback, downCallback) {
@@ -135,11 +130,13 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.calendarHeader}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.updateCalendar('add', 1, 'month'),
-          () => this.updateCalendar('subtract', 1, 'month'),
+          () => this.updateCalendar(this.state.calendar.add(1, 'month')),
+          () => this.updateCalendar(this.state.calendar.subtract(1, 'month')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowLeft}`}
-          onClick={() => this.updateCalendar('subtract', 1, 'month')}>
+          onClick={
+            () => this.updateCalendar(this.state.calendar.subtract(1, 'month'))
+          }>
         </div>
         <span>
           { this.state.calendar.format('YYYY') === this.current.format('YYYY')
@@ -148,7 +145,9 @@ class DatetimeInput extends React.Component {
           }
         </span>
         <div className={`${styles.arrow} ${styles.arrowRight}`}
-          onClick={() => this.updateCalendar('add', 1, 'month')}>
+          onClick={
+            () => this.updateCalendar(this.state.calendar.add(1, 'month'))
+          }>
         </div>
       </div>
     )
