@@ -57,8 +57,15 @@ class DatetimeInput extends React.Component {
   }
 
   updateDatetime(method, amount, interval) {
-    let datetime = calendar = this.state.datetime[method](amount, interval)
-    this.setState({datetime, calendar}, () => this.props.onChange(datetime))
+    let datetime = this.state.datetime[method](amount, interval)
+    if ( datetime.month() !== this.state.calendar.month() ) {
+      this.setState({
+        datetime: datetime,
+        calendar: datetime,
+      }, () => this.props.onChange(datetime))
+    } else {
+      this.setState({datetime}, () => this.props.onChange(datetime))
+    }
   }
 
   handleOnWheel(event, upCallback, downCallback) {
