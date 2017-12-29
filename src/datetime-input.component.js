@@ -48,7 +48,7 @@ class DatetimeInput extends React.Component {
       active: false,
       datetime: null,
       calendar: null,
-    }, this.props.onChange)
+    }, () => this.props.onChange())
   }
 
   updateCalendar(method, amount, interval) {
@@ -60,7 +60,7 @@ class DatetimeInput extends React.Component {
   updateDatetime(method, amount, interval) {
     this.setState({
       datetime: this.state.datetime[method](amount, interval),
-    }, this.props.onChange)
+    }, () => this.props.onChange(this.state.datetime))
   }
 
   handleOnWheel(event, upCallback, downCallback) {
