@@ -34,6 +34,8 @@ module.exports = {
     library: 'DatetimeInputs',
   },
 
+  devtool: 'source-map',
+
   plugins: [
     new webpack.optimize.UglifyJsPlugin({
       include: /\.min\.js$/,
