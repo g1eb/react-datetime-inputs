@@ -60,7 +60,6 @@ render() {
 | clearText | Clear text shown in the button to clear date object | Clear | no |
 | onChange | Handler function that is fired on change of datetime object | none | no |
 | onClose | Handler function that is fired on close of the edit popover | none | no |
-| cssClass | custom css class name for datetime presentation | none | no |
 | customDisplay | custom display component for presentation | none | no |
 
 Note that when custom display component is provided it is up to the implementation to format display value and include a button to toggle datetime editor/popover.
