@@ -196,8 +196,13 @@ class DatetimeInput extends React.Component {
               dateStyles += ` ${styles.inactive}`
             }
 
+            let dateFormat = date.format('YYYY-MM-DD')
+            let timeFormat = this.state.datetime.format('HH:mm:ssZ')
+            let datetime = moment(`${dateFormat}T${timeFormat}`)
+
             return (
-              <span className={dateStyles}>
+              <span className={dateStyles}
+                onClick={() => this.update(datetime)}>
                 {date.date()}
               </span>
             )
