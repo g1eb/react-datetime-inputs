@@ -31,7 +31,7 @@ yarn add react-datetime-inputs
 
 
 ```javascript
-import DatetimeInput from 'react-datetime-inputs'
+import { DatetimeInput } from 'react-datetime-inputs'
 ```
 
 3) Render DatetimeInput component
