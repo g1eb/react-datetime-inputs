@@ -98,27 +98,27 @@ class DatetimeInput extends React.Component {
   }
 
   renderDate() {
-    if ( this.state.datetime ) {
+    if ( this.props.datetime ) {
       return (
         <div className={styles.date}>
-          {this.state.datetime.format(this.props.dateFormat)}
+          {this.props.datetime.format(this.props.dateFormat)}
         </div>
       )
     }
   }
 
   renderTime() {
-    if ( this.state.datetime ) {
+    if ( this.props.datetime ) {
       return (
         <div className={styles.time}>
-          {this.state.datetime.format(this.props.timeFormat)}
+          {this.props.datetime.format(this.props.timeFormat)}
         </div>
       )
     }
   }
 
   renderPlaceholder() {
-    if ( !this.state.datetime ) {
+    if ( !this.props.datetime ) {
       return (
         <div className={styles.placeholder}>
           {this.props.placeholder}
