@@ -60,7 +60,7 @@ class DatetimeInput extends React.Component {
     if ( !!this.state.calendar && datetime.month() !== this.state.calendar.month() ) {
       this.setState({
         datetime: datetime,
-        calendar: datetime,
+        calendar: datetime.clone(),
       }, () => this.props.onChange(datetime))
     } else {
       this.setState({datetime}, () => this.props.onChange(datetime))
