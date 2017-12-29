@@ -229,9 +229,13 @@ class DatetimeInput extends React.Component {
           () => this.updateDatetime('add', 1, 'hour'),
           () => this.updateDatetime('subtract', 1, 'hour'),
         )}>
-        <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowUp}`}
+          onClick={() => this.updateDatetime('add', 1, 'hour')}>
+        </div>
         <span>{this.state.datetime.format('HH')}</span>
-        <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowDown}`}
+          onClick={() => this.updateDatetime('subtract', 1, 'hour')}>
+        </div>
       </div>
     )
   }
@@ -243,9 +247,13 @@ class DatetimeInput extends React.Component {
           () => this.updateDatetime('add', 1, 'minutes'),
           () => this.updateDatetime('subtract', 1, 'minutes'),
         )}>
-        <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowUp}`}
+          onClick={() => this.updateDatetime('add', 1, 'minutes')}>
+        </div>
         <span>{this.state.datetime.format('mm')}</span>
-        <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowDown}`}
+          onClick={() => this.updateDatetime('subtract', 1, 'minutes')}>
+        </div>
       </div>
     )
   }
@@ -257,9 +265,13 @@ class DatetimeInput extends React.Component {
           () => this.updateDatetime('add', 1, 'seconds'),
           () => this.updateDatetime('subtract', 1, 'seconds'),
         )}>
-        <div className={`${styles.arrow} ${styles.arrowUp}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowUp}`}
+          onClick={() => this.updateDatetime('add', 1, 'seconds')}>
+        </div>
         <span>{this.state.datetime.format('ss')}</span>
-        <div className={`${styles.arrow} ${styles.arrowDown}`}></div>
+        <div className={`${styles.arrow} ${styles.arrowDown}`}
+          onClick={() => this.updateDatetime('subtract', 1, 'seconds')}>
+        </div>
       </div>
     )
   }
