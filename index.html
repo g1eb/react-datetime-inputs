@@ -28,30 +28,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
 
     <!-- Datetime Inputs -->
-    <script src="dist/datetime-inputs.min.js"></script>
+    <script src="dist/datetime-inputs.js"></script>
 
     <!-- Example Component -->
     <script type="text/babel">
 
-      let now = moment()
+      class App extends React.Component {
 
-      // Handler function
-      let handleOnChange = function (val) {
-        console.log(val)
+        handleOnChange(datetime) {
+          this.setState({datetime})
+        }
+
+        render() {
+          return (
+            <div>
+              <h1>Datetime</h1>
+              <DatetimeInputs.DatetimeInput
+                datetime={this.state.datetime}
+                onChange={this.handleOnChange.bind(this)}
+                placeholder={'Click me'}>
+              </DatetimeInputs.DatetimeInput>
+            </div>
+          )
+        }
       }
 
       // Render datetime inputs
-      ReactDOM.render(
-        <div>
-          <h1>Datetime</h1>
-          <DatetimeInputs.DatetimeInput
-            datetime={now}
-            onChange={print}
-            placeholder={'Click me'}>
-          </DatetimeInputs.DatetimeInput>
-        </div>,
-        document.getElementById('root')
-      )
+      ReactDOM.render(<App />, document.getElementById('root'))
 
     </script>
   </body>
