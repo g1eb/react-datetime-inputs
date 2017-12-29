@@ -52,9 +52,8 @@ class DatetimeInput extends React.Component {
   }
 
   updateCalendar(method, amount, interval) {
-    this.setState({
-      calendar: this.state.calendar[method](amount, interval),
-    })
+    let calendar = this.state.calendar[method](amount, interval)
+    this.setState({calendar})
   }
 
   updateDatetime(method, amount, interval) {
