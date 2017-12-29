@@ -58,9 +58,9 @@ render() {
 | placeholder | Placeholder is shown when input object is undefined | none | no |
 | allowClear | Allow users to clear selected datetime value | false | no |
 | clearText | Clear text shown in the button to clear date object | Clear | no |
-| on-change | Handler function that is fired on change of datetime object | none | no |
-| on-close | Handler function that is fired on close of the edit popover | none | no |
-| css-class | custom css class name for datetime presentation | none | no |
+| onChange | Handler function that is fired on change of datetime object | none | no |
+| onClose | Handler function that is fired on close of the edit popover | none | no |
+| cssClass | custom css class name for datetime presentation | none | no |
 
 
 ## Dependencies
