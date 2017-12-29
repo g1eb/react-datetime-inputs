@@ -10,7 +10,7 @@ Click <a href="https://rawgit.com/g1eb/react-datetime-inputs/master/" target="_b
 
 
 ### Datetime input
-[<img src="https://raw.githubusercontent.com/g1eb/react-datetime-inputs/master/images/datetime.png" alt="Angular directive datetime input - datetime input" width="300px">](https://rawgit.com/g1eb/react-datetime-inputs/master/)
+[<img src="https://raw.githubusercontent.com/g1eb/react-datetime-inputs/master/images/datetime.png" alt="React component for datetime inpt" width="300px">](https://rawgit.com/g1eb/react-datetime-inputs/master/)
 
 
 ## Install
@@ -53,7 +53,6 @@ render() {
 |Property        | Usage           | Default  | Required |
 |:------------- |:-------------|:-----:|:-----:|
 | datetime | moment.js datetime object or a datetime string | none | no |
-| format | [moment.js compatible date/time format](https://momentjs.com/docs/#/displaying/format/) used for parsing initial datetime objects | none | no |
 | date-format | [moment.js compatible date format](https://momentjs.com/docs/#/displaying/format/) used for display in date and datetime input directives | 'DD MMMM YYYY' | no |
 | time-format | [moment.js compatible time format](https://momentjs.com/docs/#/displaying/format/) used for display in time and datetime input directives | 'HH : mm : ss' | no |
 | placeholder | Placeholder is shown when input object is undefined | none | no |
