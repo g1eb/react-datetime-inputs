@@ -239,7 +239,8 @@
 }
 
 .datetimeInput .calendar .calendarBody .week .date.current {
-  color: #444;
+  color: #555;
+  font-weight: 900;
 }
 
 .datetimeInput .calendar .calendarBody .week .date:not(.active):hover {
