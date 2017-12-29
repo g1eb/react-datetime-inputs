@@ -321,6 +321,10 @@ class DatetimeInput extends React.Component {
         datetime: this.props.datetime,
       })
     } else {
+      let displayClassNames = `${styles.display} ${this.props.cssClass} ${
+        this.state.active ? styles.active : ''
+      }`
+
       return (
         <div className={displayClassNames}
           onClick={this.toggleEditPopover.bind(this)}>
@@ -350,10 +354,6 @@ class DatetimeInput extends React.Component {
   }
 
   render() {
-    let displayClassNames = `${styles.display} ${this.props.cssClass} ${
-      this.state.active ? styles.active : ''
-    }`
-
     return (
       <div className={styles.datetimeInput}
         ref={node => {this.wrapper = node}}>
