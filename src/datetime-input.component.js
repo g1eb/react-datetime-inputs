@@ -314,6 +314,24 @@ class DatetimeInput extends React.Component {
     )
   }
 
+  renderDisplay() {
+    if ( !!this.props.customDisplay ) {
+      return React.cloneElement(this.props.customDisplay, {
+        onClick: this.toggleEditPopover.bind(this),
+        datetime: this.props.datetime,
+      })
+    } else {
+      return (
+        <div className={displayClassNames}
+          onClick={this.toggleEditPopover.bind(this)}>
+          {this.renderDate()}
+          {this.renderTime()}
+          {this.renderPlaceholder()}
+        </div>
+      )
+    }
+  }
+
   renderEditPopover() {
     if ( this.state.active ) {
       return (
@@ -339,12 +357,7 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.datetimeInput}
         ref={node => {this.wrapper = node}}>
-        <div className={displayClassNames}
-          onClick={this.toggleEditPopover.bind(this)}>
-          {this.renderDate()}
-          {this.renderTime()}
-          {this.renderPlaceholder()}
-        </div>
+        {this.renderDisplay()}
         {this.renderEditPopover()}
       </div>
     )
@@ -360,6 +373,7 @@ DatetimeInput.defaultProps = {
   onClose: undefined,
   allowClear: false,
   cssClass: '',
+  customDisplay: undefined,
 }
 
 export default DatetimeInput
