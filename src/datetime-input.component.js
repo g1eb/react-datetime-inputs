@@ -60,7 +60,7 @@ class DatetimeInput extends React.Component {
   updateDatetime(method, amount, interval) {
     this.setState({
       datetime: this.state.datetime[method](amount, interval),
-    })
+    }, this.props.onChange)
   }
 
   handleOnWheel(event, upCallback, downCallback) {
@@ -337,8 +337,9 @@ DatetimeInput.defaultProps = {
   dateFormat: 'DD MMMM YYYY',
   timeFormat: 'HH : mm : ss',
   placeholder: 'Set datetime',
-  allowClear: false,
+  onChange: undefined,
   onClose: undefined,
+  allowClear: false,
 }
 
 export default DatetimeInput
