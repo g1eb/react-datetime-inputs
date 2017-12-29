@@ -528,6 +528,27 @@ var DatetimeInput = function (_React$Component) {
       );
     }
   }, {
+    key: 'renderDisplay',
+    value: function renderDisplay() {
+      if (!!this.props.customDisplay) {
+        return React.cloneElement(this.props.customDisplay, {
+          onClick: this.toggleEditPopover.bind(this),
+          datetime: this.props.datetime
+        });
+      } else {
+        var displayClassNames = _datetimeInput2.default.display + ' ' + this.props.cssClass + ' ' + (this.state.active ? _datetimeInput2.default.active : '');
+
+        return React.createElement(
+          'div',
+          { className: displayClassNames,
+            onClick: this.toggleEditPopover.bind(this) },
+          this.renderDate(),
+          this.renderTime(),
+          this.renderPlaceholder()
+        );
+      }
+    }
+  }, {
     key: 'renderEditPopover',
     value: function renderEditPopover() {
       if (this.state.active) {
@@ -552,22 +573,13 @@ var DatetimeInput = function (_React$Component) {
     value: function render() {
       var _this10 = this;
 
-      var displayClassNames = _datetimeInput2.default.display + ' ' + this.props.cssClass + ' ' + (this.state.active ? _datetimeInput2.default.active : '');
-
       return React.createElement(
         'div',
         { className: _datetimeInput2.default.datetimeInput,
           ref: function ref(node) {
             _this10.wrapper = node;
           } },
-        React.createElement(
-          'div',
-          { className: displayClassNames,
-            onClick: this.toggleEditPopover.bind(this) },
-          this.renderDate(),
-          this.renderTime(),
-          this.renderPlaceholder()
-        ),
+        this.renderDisplay(),
         this.renderEditPopover()
       );
     }
@@ -584,7 +596,8 @@ DatetimeInput.defaultProps = {
   onChange: undefined,
   onClose: undefined,
   allowClear: false,
-  cssClass: ''
+  cssClass: '',
+  customDisplay: undefined
 };
 
 exports.default = DatetimeInput;
