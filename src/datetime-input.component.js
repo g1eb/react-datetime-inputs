@@ -22,6 +22,7 @@ class DatetimeInput extends React.Component {
 
     this.state = {
       active: false,
+      warning: false,
       calendar: null,
       datetime,
     }
@@ -321,10 +322,10 @@ class DatetimeInput extends React.Component {
         datetime: this.props.datetime,
       })
     } else {
-      let displayClassNames = `${styles.display} ${
-        this.state.active ? styles.active : ''
-      }`
-
+      let displayClassNames = `${styles.display}
+        ${this.state.active ? styles.active : ''}
+        ${this.state.warning ? styles.warning : ''}
+      `
       return (
         <div className={displayClassNames}
           onClick={this.toggleEditPopover.bind(this)}>
