@@ -548,7 +548,9 @@ var DatetimeInput = function (_React$Component) {
       if (!!this.props.customDisplay) {
         return React.cloneElement(this.props.customDisplay, {
           onClick: this.toggleEditPopover.bind(this),
-          datetime: this.props.datetime
+          datetime: this.props.datetime,
+          warning: this.state.warning,
+          active: this.state.active
         });
       } else {
         var displayClassNames = _datetimeInput2.default.display + '\n        ' + (this.state.active ? _datetimeInput2.default.active : '') + '\n        ' + (this.state.warning ? _datetimeInput2.default.warning : '') + '\n      ';
