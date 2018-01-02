@@ -56,11 +56,27 @@ class DatetimeInput extends React.Component {
     this.setState({calendar})
   }
 
+  checkBounds(datetime) {
+    return (
+      (!this.props.minDate || datetime > this.props.minDate)
+      && (!this.props.maxDate || datetime < this.props.maxDate)
+    )
+  }
+
   update(datetime) {
     if ( !!this.state.calendar ) {
       this.updateCalendar(datetime.clone())
     }
-    this.setState({datetime}, () => this.props.onChange(datetime))
+
+    if ( this.checkBounds(datetime) ) {
+      this.setState({datetime}, () => this.props.onChange(datetime))
+    } else {
+      this.setState({warning: true}, () => {
+        setTimeout(() => {
+          this.setState({warning: false})
+        }, 250)
+      })
+    }
   }
 
   handleOnWheel(event, upCallback, downCallback) {
@@ -374,6 +390,8 @@ DatetimeInput.defaultProps = {
   onClose: undefined,
   allowClear: false,
   customDisplay: undefined,
+  minDate: undefined,
+  maxDate: undefined,
 }
 
 export default DatetimeInput
