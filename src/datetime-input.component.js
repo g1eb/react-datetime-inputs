@@ -251,15 +251,15 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerHours}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.update(this.state.datetime.add(1, 'hours')),
-          () => this.update(this.state.datetime.subtract(1, 'hours')),
+          () => this.update(this.state.datetime.clone().add(1, 'hours')),
+          () => this.update(this.state.datetime.clone().subtract(1, 'hours')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}
-          onClick={() => this.update(this.state.datetime.add(1, 'hours'))}>
+          onClick={() => this.update(this.state.datetime.clone().add(1, 'hours'))}>
         </div>
         <span>{this.state.datetime.format('HH')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}
-          onClick={() => this.update(this.state.datetime.subtract(1, 'hours'))}>
+          onClick={() => this.update(this.state.datetime.clone().subtract(1, 'hours'))}>
         </div>
       </div>
     )
@@ -269,15 +269,15 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerMinutes}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.update(this.state.datetime.add(1, 'minutes')),
-          () => this.update(this.state.datetime.subtract(1, 'minutes')),
+          () => this.update(this.state.datetime.clone().add(1, 'minutes')),
+          () => this.update(this.state.datetime.clone().subtract(1, 'minutes')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}
-          onClick={() => this.update(this.state.datetime.add(1, 'minutes'))}>
+          onClick={() => this.update(this.state.datetime.clone().add(1, 'minutes'))}>
         </div>
         <span>{this.state.datetime.format('mm')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}
-          onClick={() => this.update(this.state.datetime.subtract(1, 'minutes'))}>
+          onClick={() => this.update(this.state.datetime.clone().subtract(1, 'minutes'))}>
         </div>
       </div>
     )
@@ -287,15 +287,15 @@ class DatetimeInput extends React.Component {
     return (
       <div className={styles.timerSeconds}
         onWheel={(event) => this.handleOnWheel(event,
-          () => this.update(this.state.datetime.add(1, 'seconds')),
-          () => this.update(this.state.datetime.subtract(1, 'seconds')),
+          () => this.update(this.state.datetime.clone().add(1, 'seconds')),
+          () => this.update(this.state.datetime.clone().subtract(1, 'seconds')),
         )}>
         <div className={`${styles.arrow} ${styles.arrowUp}`}
-          onClick={() => this.update(this.state.datetime.add(1, 'seconds'))}>
+          onClick={() => this.update(this.state.datetime.clone().add(1, 'seconds'))}>
         </div>
         <span>{this.state.datetime.format('ss')}</span>
         <div className={`${styles.arrow} ${styles.arrowDown}`}
-          onClick={() => this.update(this.state.datetime.subtract(1, 'seconds'))}>
+          onClick={() => this.update(this.state.datetime.clone().subtract(1, 'seconds'))}>
         </div>
       </div>
     )
