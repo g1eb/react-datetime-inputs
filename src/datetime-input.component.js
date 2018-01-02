@@ -336,6 +336,8 @@ class DatetimeInput extends React.Component {
       return React.cloneElement(this.props.customDisplay, {
         onClick: this.toggleEditPopover.bind(this),
         datetime: this.props.datetime,
+        warning: this.state.warning,
+        active: this.state.active,
       })
     } else {
       let displayClassNames = `${styles.display}
