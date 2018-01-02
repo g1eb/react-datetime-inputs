@@ -55,6 +55,8 @@ render() {
 | datetime | moment.js datetime object or a datetime string | none | no |
 | date-format | [moment.js compatible date format](https://momentjs.com/docs/#/displaying/format/) used for display in date and datetime input directives | 'DD MMMM YYYY' | no |
 | time-format | [moment.js compatible time format](https://momentjs.com/docs/#/displaying/format/) used for display in time and datetime input directives | 'HH : mm : ss' | no |
+| minDate | moment.js datetime object min datetime | none | no |
+| maxDate | moment.js datetime object max datetime | none | no |
 | placeholder | Placeholder is shown when input object is undefined | none | no |
 | allowClear | Allow users to clear selected datetime value | false | no |
 | clearText | Clear text shown in the button to clear date object | Clear | no |
