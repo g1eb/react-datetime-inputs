@@ -149,6 +149,7 @@ var DatetimeInput = function (_React$Component) {
 
     _this.state = {
       active: false,
+      warning: false,
       calendar: null,
       datetime: datetime
     };
@@ -193,6 +194,11 @@ var DatetimeInput = function (_React$Component) {
       this.setState({ calendar: calendar });
     }
   }, {
+    key: 'checkBounds',
+    value: function checkBounds(datetime) {
+      return (!this.props.minDate || datetime > this.props.minDate) && (!this.props.maxDate || datetime < this.props.maxDate);
+    }
+  }, {
     key: 'update',
     value: function update(datetime) {
       var _this3 = this;
@@ -200,9 +206,18 @@ var DatetimeInput = function (_React$Component) {
       if (!!this.state.calendar) {
         this.updateCalendar(datetime.clone());
       }
-      this.setState({ datetime: datetime }, function () {
-        return _this3.props.onChange(datetime);
-      });
+
+      if (this.checkBounds(datetime)) {
+        this.setState({ datetime: datetime }, function () {
+          return _this3.props.onChange(datetime);
+        });
+      } else {
+        this.setState({ warning: true }, function () {
+          setTimeout(function () {
+            _this3.setState({ warning: false });
+          }, 250);
+        });
+      }
     }
   }, {
     key: 'handleOnWheel',
@@ -398,14 +413,14 @@ var DatetimeInput = function (_React$Component) {
         { className: _datetimeInput2.default.timerHours,
           onWheel: function onWheel(event) {
             return _this7.handleOnWheel(event, function () {
-              return _this7.update(_this7.state.datetime.add(1, 'hours'));
+              return _this7.update(_this7.state.datetime.clone().add(1, 'hours'));
             }, function () {
-              return _this7.update(_this7.state.datetime.subtract(1, 'hours'));
+              return _this7.update(_this7.state.datetime.clone().subtract(1, 'hours'));
             });
           } },
         React.createElement('div', { className: _datetimeInput2.default.arrow + ' ' + _datetimeInput2.default.arrowUp,
           onClick: function onClick() {
-            return _this7.update(_this7.state.datetime.add(1, 'hours'));
+            return _this7.update(_this7.state.datetime.clone().add(1, 'hours'));
           } }),
         React.createElement(
           'span',
@@ -414,7 +429,7 @@ var DatetimeInput = function (_React$Component) {
         ),
         React.createElement('div', { className: _datetimeInput2.default.arrow + ' ' + _datetimeInput2.default.arrowDown,
           onClick: function onClick() {
-            return _this7.update(_this7.state.datetime.subtract(1, 'hours'));
+            return _this7.update(_this7.state.datetime.clone().subtract(1, 'hours'));
           } })
       );
     }
@@ -428,14 +443,14 @@ var DatetimeInput = function (_React$Component) {
         { className: _datetimeInput2.default.timerMinutes,
           onWheel: function onWheel(event) {
             return _this8.handleOnWheel(event, function () {
-              return _this8.update(_this8.state.datetime.add(1, 'minutes'));
+              return _this8.update(_this8.state.datetime.clone().add(1, 'minutes'));
             }, function () {
-              return _this8.update(_this8.state.datetime.subtract(1, 'minutes'));
+              return _this8.update(_this8.state.datetime.clone().subtract(1, 'minutes'));
             });
           } },
         React.createElement('div', { className: _datetimeInput2.default.arrow + ' ' + _datetimeInput2.default.arrowUp,
           onClick: function onClick() {
-            return _this8.update(_this8.state.datetime.add(1, 'minutes'));
+            return _this8.update(_this8.state.datetime.clone().add(1, 'minutes'));
           } }),
         React.createElement(
           'span',
@@ -444,7 +459,7 @@ var DatetimeInput = function (_React$Component) {
         ),
         React.createElement('div', { className: _datetimeInput2.default.arrow + ' ' + _datetimeInput2.default.arrowDown,
           onClick: function onClick() {
-            return _this8.update(_this8.state.datetime.subtract(1, 'minutes'));
+            return _this8.update(_this8.state.datetime.clone().subtract(1, 'minutes'));
           } })
       );
     }
@@ -458,14 +473,14 @@ var DatetimeInput = function (_React$Component) {
         { className: _datetimeInput2.default.timerSeconds,
           onWheel: function onWheel(event) {
             return _this9.handleOnWheel(event, function () {
-              return _this9.update(_this9.state.datetime.add(1, 'seconds'));
+              return _this9.update(_this9.state.datetime.clone().add(1, 'seconds'));
             }, function () {
-              return _this9.update(_this9.state.datetime.subtract(1, 'seconds'));
+              return _this9.update(_this9.state.datetime.clone().subtract(1, 'seconds'));
             });
           } },
         React.createElement('div', { className: _datetimeInput2.default.arrow + ' ' + _datetimeInput2.default.arrowUp,
           onClick: function onClick() {
-            return _this9.update(_this9.state.datetime.add(1, 'seconds'));
+            return _this9.update(_this9.state.datetime.clone().add(1, 'seconds'));
           } }),
         React.createElement(
           'span',
@@ -474,7 +489,7 @@ var DatetimeInput = function (_React$Component) {
         ),
         React.createElement('div', { className: _datetimeInput2.default.arrow + ' ' + _datetimeInput2.default.arrowDown,
           onClick: function onClick() {
-            return _this9.update(_this9.state.datetime.subtract(1, 'seconds'));
+            return _this9.update(_this9.state.datetime.clone().subtract(1, 'seconds'));
           } })
       );
     }
@@ -536,8 +551,7 @@ var DatetimeInput = function (_React$Component) {
           datetime: this.props.datetime
         });
       } else {
-        var displayClassNames = _datetimeInput2.default.display + ' ' + (this.state.active ? _datetimeInput2.default.active : '');
-
+        var displayClassNames = _datetimeInput2.default.display + '\n        ' + (this.state.active ? _datetimeInput2.default.active : '') + '\n        ' + (this.state.warning ? _datetimeInput2.default.warning : '') + '\n      ';
         return React.createElement(
           'div',
           { className: displayClassNames,
@@ -596,7 +610,9 @@ DatetimeInput.defaultProps = {
   onChange: undefined,
   onClose: undefined,
   allowClear: false,
-  customDisplay: undefined
+  customDisplay: undefined,
+  minDate: undefined,
+  maxDate: undefined
 };
 
 exports.default = DatetimeInput;
