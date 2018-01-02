@@ -70,6 +70,10 @@ For example:
 </h1>
 ```
 
+## Angular directives
+
+If you are looking for datetime input widgets as angular directices, check out [angular-datetime-inputs](https://github.com/g1eb/angular-datetime-inputs) and [angular-datetime-range](https://github.com/g1eb/angular-datetime-range)
+
 ## Dependencies
 
 * [react.js](https://reactjs.org/)
