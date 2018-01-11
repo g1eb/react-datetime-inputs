@@ -63,6 +63,7 @@ render() {
 | onChange | Handler function that is fired on change of datetime object | none | no |
 | onClose | Handler function that is fired on close of the edit popover | none | no |
 | customDisplay | custom display component for presentation | none | no |
+| naturalScroll | scroll direction | true | no |
 
 Note that when custom display component is used you need to format display value and include a button to toggle datetime editor/popover. Additionally one can use `active` and `warning` properties to change display (or alert user of invalid input when used together with `minDate` and/or `maxDate` properties).  
 
