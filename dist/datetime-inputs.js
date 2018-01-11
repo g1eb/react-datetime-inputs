@@ -225,10 +225,10 @@ var DatetimeInput = function (_React$Component) {
       event = event.originalEvent || event;
       var delta = event.wheelDelta || event.deltaY * -1 || 0;
       if (delta < 0) {
-        upCallback();
+        this.props.naturalScroll ? upCallback() : downCallback();
       }
       if (delta > 0) {
-        downCallback();
+        this.props.naturalScroll ? downCallback() : upCallback();
       }
     }
   }, {
@@ -614,7 +614,8 @@ DatetimeInput.defaultProps = {
   allowClear: false,
   customDisplay: undefined,
   minDate: undefined,
-  maxDate: undefined
+  maxDate: undefined,
+  naturalScroll: true
 };
 
 exports.default = DatetimeInput;
