@@ -83,10 +83,10 @@ class DatetimeInput extends React.Component {
     event = event.originalEvent || event
     let delta = event.wheelDelta || (event.deltaY * -1) || 0
     if ( delta < 0 ) {
-      upCallback()
+      this.props.naturalScroll ? upCallback() : downCallback()
     }
     if ( delta > 0 ) {
-      downCallback()
+      this.props.naturalScroll ? downCallback() : upCallback()
     }
   }
 
@@ -394,6 +394,7 @@ DatetimeInput.defaultProps = {
   customDisplay: undefined,
   minDate: undefined,
   maxDate: undefined,
+  naturalScroll: true,
 }
 
 export default DatetimeInput
